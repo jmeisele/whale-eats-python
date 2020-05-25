@@ -5,7 +5,7 @@ services:
         restart: always
         build: 
             context: ./app1
-            dockerfile: Dockerfile.dev
+            dockerfile: Dockerfile
         ports: 
             - "3000:3000"
         volumes: 
@@ -16,7 +16,7 @@ services:
         restart: always
         build: 
             context: ./app2
-            dockerfile: Dockerfile.dev
+            dockerfile: Dockerfile
         ports: 
             - "3001:3001"
         volumes: 
@@ -26,7 +26,7 @@ services:
         container_name: nginx
         build:
             context: ./nginx
-            dockerfile: Dockerfile.dev
+            dockerfile: Dockerfile
         restart: always
         # Ports flag allows mapping ports from host:container
         ports:
