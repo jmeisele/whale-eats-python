@@ -1,10 +1,24 @@
 version: '3'
 services: 
     python:
+        restart: always
         build: 
-            context: .
+            context: ./app
             dockerfile: Dockerfile.dev
         ports: 
             - "3000:3000"
         volumes: 
-            - .:/app
+            - ./app:/app
+
+    nginx:
+        container_name: nginx
+        build:
+            context: ./nginx
+            dockerfile: Dockerfile.dev
+        restart: always
+        # Ports flag allows mapping ports from host:container
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes: 
+            - ./nginx:/etc/nginx/conf.d/
