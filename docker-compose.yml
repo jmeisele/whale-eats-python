@@ -1,15 +1,27 @@
 version: '3'
 services: 
-    python:
+    python1:
+        container_name: python-service-1
         restart: always
         build: 
-            context: ./app
+            context: ./app1
             dockerfile: Dockerfile.dev
         ports: 
             - "3000:3000"
         volumes: 
-            - ./app:/app
+            - ./app1:/app
 
+    python2:
+        container_name: python-service-2
+        restart: always
+        build: 
+            context: ./app2
+            dockerfile: Dockerfile.dev
+        ports: 
+            - "3001:3001"
+        volumes: 
+            - ./app2:/app
+    
     nginx:
         container_name: nginx
         build:
