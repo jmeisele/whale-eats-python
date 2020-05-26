@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/jmeisele/WhaleEatsPython.svg?branch=master)](https://travis-ci.com/jmeisele/WhaleEatsPython)
+
 # Whale Eats Python
 Starter kit for serving incoming http requests to multiple python API endpoints via nginx load balancer. All services contained in their own respective Docker containers.
 
