@@ -1,0 +1,13 @@
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t jmeisele/flask1 ./app1
+    - docker build -t jmeisele/flask2 ./app2
+    - docker build -t jmeisele/nginx ./nginx
+
+script:
+    - docker run jmeisele/flask1
+    - docker run jmeisele/flask2 
+    - docker run jmeisele/nginx
