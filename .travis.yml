@@ -12,13 +12,15 @@ before_install:
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
 
-before_script:
+# before_script:
+script:
   - docker-compose up -d --build
+  - docker-compose down
 
 # script:
 #   - docker-compose exec users python manage.py test
 #   - docker-compose exec users black project
 #   - docker-compose exec users flake8 project
 
-after_script:
-  - docker-compose down
+# after_script:
+#   - docker-compose down
