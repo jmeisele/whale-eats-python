@@ -28,9 +28,11 @@ services:
             context: ./nginx
             dockerfile: Dockerfile
         restart: always
-        # Ports flag allows mapping ports from host:container
         ports:
             - "80:80"
             - "443:443"
+        depends_on: 
+            - python1
+            - python2
         volumes: 
             - ./nginx:/etc/nginx/conf.d/

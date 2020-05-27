@@ -3,28 +3,21 @@ sudo: required
 services:
   - docker
 
-env:
-  DOCKER_COMPOSE_VERSION: 1.23.2
-
-before_install:
-  - sudo rm /usr/local/bin/docker-compose
-  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-  - chmod +x docker-compose
-  - sudo mv docker-compose /usr/local/bin
-
-# before_script:
-    # placeholder
-
 script:
-    - docker-compose up -d --build
-    - docker-compose down
-    #   - docker-compose exec users python manage.py test
-    #   - docker-compose exec users black project
-    #   - docker-compose exec users flake8 project
+  # Build images
+  - docker build -t jmeisele/flask_app1 ./app1
+  - docker build -t jmeisele/flask_app2 ./app2
+  - docker build -t jmeisele/flask_nginx ./nginx
 
-# after_script:
-#   - docker-compose down
+after_success:
+  # Login to docker CLI
+  - echo "$DOCKER_PWD" | docker login -u "$DOCKER_ID" --password-stdin
 
+  # Push images to DockerHub
+  - docker push jmeisele/flask_app1
+  - docker push jmeisele/flask_app2
+  - docker push jmeisele/flask_nginx
+    
 # deploy:
 #     provider: elasticbeanstalk
 #     region: "us-east-2"
