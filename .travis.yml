@@ -15,8 +15,8 @@ after_success:
 
   # Push images to DockerHub
   - docker push jmeisele/flask_app1
-  - docker push jmeisele/flask_app2
-  - docker push jmeisele/flask_nginx
+  - docker push jmeisele/flask_app2 
+  - docker push jmeisele/flask_nginx 
     
 # deploy:
 #     provider: elasticbeanstalk
