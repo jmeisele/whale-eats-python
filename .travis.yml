@@ -15,17 +15,17 @@ after_success:
 
   # Push images to DockerHub
   - docker push jmeisele/flask_app1
-  - docker push jmeisele/flask_app2
-  - docker push jmeisele/flask_nginx
+  - docker push jmeisele/flask_app2 
+  - docker push jmeisele/flask_nginx 
     
-# deploy:
-#     provider: elasticbeanstalk
-#     region: "us-east-2"
-#     app: "docker-flask"
-#     env: "DockerFlask-env"
-#     bucket_name: "elasticbeanstalk-us-east-2-726690209754"
-#     bucket_path: "docker-flask"
-#     on:
-#         branch: master
-#     access_key_id: $AWS_ACCESS_KEY
-#     secret_access_key: $AWS_SECRET_KEY
+deploy:
+    provider: elasticbeanstalk
+    region: "us-east-2"
+    app: "docker-flask"
+    env: "DockerFlask-env"
+    bucket_name: "elasticbeanstalk-us-east-2-726690209754"
+    bucket_path: "docker-flask"
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
