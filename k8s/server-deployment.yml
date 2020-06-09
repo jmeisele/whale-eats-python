@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+type: Deployment
+metadata:
+  name: server-deployment 
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      component : server
+  template:
+    metadata:
+      labels:
+        component: server
+    spec:
+      containers:
+        - name: server
+          image: jmeisele/flask_app1
+          ports:
+            - containerPort: 5000
