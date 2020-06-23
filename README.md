@@ -7,11 +7,11 @@ __To install__:
 
 1. Clone the project
     ```bash
-    git clone https://github.com/jmeisele/WhaleEatsPython.git
+    git clone https://github.com/jmeisele/whale-eats-python.git
     ```
 2. Change directories into the repo
     ```bash
-    cd WhaleEatsPython
+    cd whale-eats-python
     ```
 3. Run docker compose
     ```bash
